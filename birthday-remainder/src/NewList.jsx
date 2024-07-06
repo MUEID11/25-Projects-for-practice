@@ -11,27 +11,24 @@ const NewList = () => {
     response();
   }, []);
   const today = new Date().getDate();
-  console.log(typeof today);
   const matchedDates = people.filter((person) => {
-    const birthdays = Number(person.birthday.split("-")[0]);
-    return today === birthdays;
+    const matchingDate = Number(person.birthday.split("-")[0]);
+    console.log(matchingDate);
+    return today === matchingDate;
   });
-  console.log(matchedDates);
   return (
     <div className="">
       {matchedDates.length === 0 ? (
-        <div>
-          <h4>No birthdays Today</h4>
-        </div>
+        <div>No Birtdays today</div>
       ) : (
         <div>
           {matchedDates.map((person) => (
-            <article key={person.id} className="person">
-              <img src={person.image} alt={person.name} />
+            <article key={person?.id} className="person">
+              <img src={person.image} alt={`${person.name}'s image`} />
               <div>
-                <h4>{person.name}</h4>
-                <p>{person.age} years old</p>
-                <p>Birthday: {person.birthday}</p>
+              <h1 className="text-lg font-semibold">Name: {person.name}</h1>
+              <p className="font-medium">Age: {person.age}</p>
+              <p className="text-sm font-medium">Birthdate: {person.birthday}</p>
               </div>
             </article>
           ))}
