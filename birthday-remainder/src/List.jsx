@@ -1,11 +1,11 @@
-import { split } from "postcss/lib/list";
 
-const List = ({ people }) => {
+const List = () => {
+
   const today = new Date().getDate();
   console.log(typeof today);
   const matchedDates = people.filter((person) => {
     const birthdays = Number(person.birthday.split("-")[0]);
-    console.log(typeof birthdays)
+    console.log(typeof birthdays);
     return birthdays;
   });
   console.log(matchedDates);
