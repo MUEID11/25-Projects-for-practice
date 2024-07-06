@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-// import List from "./List";
+import NewList from "./NewList";
 
 function App() {
-  const [people, setPeople] = useState();
-  useEffect(() => {
-    fetch("./../public/people.json")
-      .then((res) => res.json())
-      .then((data) => setPeople(data));
-  }, []);
-  console.log(people);
+  
 
   return (
     <main className="text-left p-20">
@@ -18,7 +12,7 @@ function App() {
           Birthday reminder project
         </h1>
         <h3 className="text-2xl font-semibold"> birthdays today</h3>
-        {/* <List people={people} /> */}
+        <NewList />
 
         <button
           onClick={() => console.log("clicked")}

@@ -1,12 +1,20 @@
+import { useEffect, useState } from "react";
 
-const List = () => {
-
+const NewList = () => {
+  const [people, setPeople] = useState([]);
+  useEffect(() => {
+    const response = async () => {
+      const res = await fetch("./../public/people.json");
+      const data = await res.json();
+      setPeople(data);
+    };
+    response();
+  }, []);
   const today = new Date().getDate();
   console.log(typeof today);
   const matchedDates = people.filter((person) => {
     const birthdays = Number(person.birthday.split("-")[0]);
-    console.log(typeof birthdays);
-    return birthdays;
+    return today === birthdays;
   });
   console.log(matchedDates);
   return (
@@ -33,4 +41,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default NewList;
